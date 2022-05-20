@@ -31,8 +31,8 @@ if __name__ == '__main__':
 
     x = import_module('models.' + model_name)
     config = x.Config(dataset, embedding)
-    config.batch_size = arg.bs
-    config.learning_rate = arg.lr
+    config.batch_size = args.bs
+    config.learning_rate = args.lr
     
     np.random.seed(1)
     torch.manual_seed(1)

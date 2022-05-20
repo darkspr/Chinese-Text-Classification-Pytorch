@@ -10,6 +10,8 @@ parser = argparse.ArgumentParser(description='Chinese Text Classification')
 parser.add_argument('--model', type=str, required=True, help='choose a model: TextCNN, TextRNN, FastText, TextRCNN, TextRNN_Att, DPCNN, Transformer')
 parser.add_argument('--embedding', default='pre_trained', type=str, help='random or pre_trained')
 parser.add_argument('--word', default=False, type=bool, help='True for word, False for char')
+parser.add_argument('--bs', default=128, type=int, help='batch size')
+parser.add_argument('--lr', default=1e-3, type=float, help='learn rate')
 args = parser.parse_args()
 
 
@@ -29,6 +31,9 @@ if __name__ == '__main__':
 
     x = import_module('models.' + model_name)
     config = x.Config(dataset, embedding)
+    config.batch_size = arg.bs
+    config.learning_rate = arg.lr
+    
     np.random.seed(1)
     torch.manual_seed(1)
     torch.cuda.manual_seed_all(1)

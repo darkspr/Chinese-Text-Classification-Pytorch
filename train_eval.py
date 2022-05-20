@@ -61,7 +61,7 @@ def train(config, model, train_iter, dev_iter, test_iter):
                 else:
                     improve = ''
                 time_dif = get_time_dif(start_time)
-                msg = 'Iter: {0:>6},  Train Loss: {1:>5.2},  Train Acc: {2:>6.2%},  Val Loss: {3:>5.2},  Val Acc: {4:>6.2%},  Time: {5} {6}'
+                msg = 'Iter: {0:>6},  Train Loss: {1:>5.4},  Train Acc: {2:>6.2%},  Val Loss: {3:>5.4},  Val Acc: {4:>6.2%},  Time: {5} {6}'
                 print(msg.format(total_batch, loss.item(), train_acc, dev_loss, dev_acc, time_dif, improve))
                 writer.add_scalar("loss/train", loss.item(), total_batch)
                 writer.add_scalar("loss/dev", dev_loss, total_batch)
